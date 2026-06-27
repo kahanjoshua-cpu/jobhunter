@@ -1,6 +1,7 @@
 import MatchSummary from "@/components/MatchSummary";
 import QualificationBreakdown from "@/components/QualificationBreakdown";
 import ThingsToConsider from "@/components/ThingsToConsider";
+import ApplicationSuggestions from "@/components/ApplicationSuggestions";
 
 export default function ResultsPage() {
   return (
@@ -12,6 +13,8 @@ export default function ResultsPage() {
         <QualificationBreakdown />
 
         <ThingsToConsider />
+
+        <ApplicationSuggestions />
 
       </div>
     </main>
