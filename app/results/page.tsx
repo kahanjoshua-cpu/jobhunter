@@ -1,15 +1,17 @@
+import MatchSummary from "@/components/MatchSummary";
+import QualificationBreakdown from "@/components/QualificationBreakdown";
+import ThingsToConsider from "@/components/ThingsToConsider";
+
 export default function ResultsPage() {
   return (
-    <main className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="text-center">
+    <main className="min-h-screen bg-[#F7F8FC] py-16">
+      <div className="mx-auto max-w-5xl space-y-8 px-6">
 
-        <h1 className="text-5xl font-bold">
-          Results Page
-        </h1>
+        <MatchSummary />
 
-        <p className="mt-4 text-gray-600">
-          This is where your recommendation will appear.
-        </p>
+        <QualificationBreakdown />
+
+        <ThingsToConsider />
 
       </div>
     </main>

@@ -1,86 +1,226 @@
 export default function Hero() {
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-16">
+    <main className="bg-[#F7F8FC]">
+      <section className="mx-auto max-w-7xl px-8 py-6">
 
-      <div className="mx-auto max-w-4xl text-center">
+<div className="grid items-start gap-8 lg:grid-cols-2">
 
-        <p className="text-lg font-semibold tracking-wide">
-          Jobhunter
-        </p>
+          {/* LEFT COLUMN */}
 
-        <h1 className="mt-4 text-5xl font-bold leading-tight">
-          Know Before You Apply.
-        </h1>
+          <div className="pt-2">
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600">
-          Make informed application decisions so you can focus your time and
-          energy on the opportunities most likely to move your job search
-          forward.
-        </p>
+            <h1 className="text-6xl font-bold leading-none tracking-tight">
+              Know Before
+              <br />
+              You Apply
+              <span className="text-indigo-600">.</span>
+            </h1>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-3">
+            <p className="mt-8 max-w-xl text-lg leading-8 text-gray-600">
+              Make informed application decisions so you can focus your time
+              and energy on the opportunities{" "}
+              <span className="font-semibold text-indigo-600">
+                most likely
+              </span>{" "}
+              to move your job search forward.
+            </p>
 
-          <div className="rounded-full border bg-white px-5 py-3 shadow-sm">
-            📄 Upload Resume
+<div className="mt-8">
+
+              <h2 className="text-2xl font-bold">
+                How Jobhunter Works
+              </h2>
+
+              <div className="mt-6 space-y-5">
+
+                {/* STEP 1 */}
+
+                <div className="flex gap-4">
+
+                  <div className="flex flex-col items-center">
+
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+                      1
+                    </div>
+
+                    <div className="mt-2 h-10 w-px bg-gray-300"></div>
+
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Upload your resume
+                    </h3>
+
+                    <p className="mt-1 text-gray-600">
+                      Start with the resume you'd use today.
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {/* STEP 2 */}
+
+                <div className="flex gap-4">
+
+                  <div className="flex flex-col items-center">
+
+                    <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+                      2
+                    </div>
+
+                    <div className="mt-2 h-10 w-px bg-gray-300"></div>
+
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Paste the job description
+                    </h3>
+
+                    <p className="mt-1 text-gray-600">
+                      Compare your experience against the role.
+                    </p>
+
+                  </div>
+
+                </div>
+
+                {/* STEP 3 */}
+
+                <div className="flex gap-4">
+
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-sm font-bold text-white">
+                    3
+                  </div>
+
+                  <div>
+
+                    <h3 className="font-semibold">
+                      Receive your recommendation
+                    </h3>
+
+                    <p className="mt-1 text-gray-600">
+                      Understand whether the opportunity is worth pursuing.
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+<div className="mt-6 rounded-2xl bg-white p-4 shadow">
+
+              <p className="font-semibold text-gray-900">
+                No ads. No gimmicks.
+              </p>
+
+              <p className="mt-1 text-gray-600">
+                Just better application decisions.
+              </p>
+
+            </div>
+
           </div>
 
-          <div className="rounded-full border bg-white px-5 py-3 shadow-sm">
-            📋 Paste Job Description
-          </div>
+          {/* RIGHT COLUMN */}
 
-          <div className="rounded-full border bg-white px-5 py-3 shadow-sm">
-            ⭐ Get Recommendation
+          <div className="rounded-3xl bg-white p-8 shadow-xl">
+
+            <h2 className="text-2xl font-bold">
+              Analyze a Job
+            </h2>
+
+            <p className="mt-2 text-gray-600">
+              Upload your resume and paste the job description below.
+            </p>
+
+            <div className="mt-8">
+
+              <label className="text-sm font-medium text-gray-700">
+                Resume
+              </label>
+
+              <div className="mt-2 flex h-28 items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50">
+
+                <div className="text-center">
+
+                  <div className="text-4xl">
+                    📄
+                  </div>
+
+                  <p className="mt-3 font-semibold">
+                    Drag & Drop your resume
+                  </p>
+
+                  <p className="mt-1 text-sm text-gray-500">
+                    PDF or DOCX
+                  </p>
+
+                </div>
+
+              </div>
+
+            </div>
+                        <div className="mt-8">
+
+              <label className="text-sm font-medium text-gray-700">
+                Job Description
+              </label>
+
+              <textarea
+                rows={6}
+                placeholder="Paste the job description here..."
+                className="mt-2 w-full rounded-2xl border border-gray-300 p-4 text-gray-700 outline-none transition focus:border-indigo-600"
+              />
+
+            </div>
+
+            <button className="mt-8 w-full rounded-xl bg-indigo-600 py-4 text-lg font-semibold text-white transition hover:bg-indigo-700">
+              Analyze Match
+            </button>
+
           </div>
 
         </div>
 
-        <div className="mt-8 text-gray-600">
+        {/* FEEDBACK */}
 
-          <p className="font-medium">
-            No ads. No gimmicks.
-          </p>
+        <div className="mt-12 rounded-3xl border border-indigo-100 bg-indigo-50 px-8 py-6">
 
-          <p className="font-semibold text-black">
-            Just better application decisions.
-          </p>
+          <div className="flex flex-col items-center justify-between gap-5 md:flex-row">
+
+            <div>
+
+              <h3 className="text-lg font-semibold text-gray-900">
+                Questions or feedback?
+              </h3>
+
+              <p className="mt-1 text-gray-600">
+                Jobhunter is actively being built. I'd love to hear your ideas,
+                suggestions, or anything that would improve your experience.
+              </p>
+
+            </div>
+
+            <a
+              href="/feedback"
+              className="rounded-xl bg-indigo-600 px-6 py-3 font-semibold text-white transition hover:bg-indigo-700"
+            >
+              Leave Feedback
+            </a>
+
+          </div>
 
         </div>
 
-      </div>
-
-      <div className="mx-auto mt-14 max-w-3xl rounded-2xl border bg-white p-8 shadow-lg">
-
-        <label className="mb-2 block text-lg font-semibold">
-          📄 Upload Resume
-        </label>
-
-        <input
-          type="file"
-          className="w-full rounded-lg border p-3"
-        />
-
-        <label className="mb-2 mt-8 block text-lg font-semibold">
-          📋 Paste Job Description
-        </label>
-
-        <textarea
-          rows={10}
-          placeholder="Paste the job description here..."
-          className="w-full rounded-lg border p-4"
-        />
-
-        <button
-          className="mt-8 w-full rounded-xl bg-blue-600 py-4 text-lg font-semibold text-white transition hover:bg-blue-700"
-        >
-          Get My Recommendation
-        </button>
-
-        <p className="mt-6 text-center text-sm text-gray-500">
-          Recommendations are designed to support your judgment, not replace it.
-        </p>
-
-      </div>
-
+      </section>
     </main>
   );
 }
