@@ -5,18 +5,22 @@ import FeedbackBanner from "./home/FeedbackBanner";
 
 export default function Hero() {
   return (
-    <main className="bg-[#F7F8FC]">
-      <section className="mx-auto max-w-7xl px-8 py-6">
-        <div className="grid items-start gap-8 lg:grid-cols-2">
-          <div className="pt-2">
+    <main className="min-h-screen bg-[#F7F8FC]">
+<section className="mx-auto max-w-[1420px] px-8 pt-8 pb-12">        <div className="grid items-start gap-12 lg:grid-cols-[1fr_760px]">
+          <div className="pt-16">
             <HeroCopy />
             <HowItWorks />
           </div>
-
-          <UploadCard />
+<div className="flex justify-end pt-6 pr-8">
+  <div className="w-full max-w-[760px]">
+    <UploadCard />
+  </div>
+</div>
         </div>
 
-        <FeedbackBanner />
+        <div className="mt-12">
+          <FeedbackBanner />
+        </div>
       </section>
     </main>
   );
