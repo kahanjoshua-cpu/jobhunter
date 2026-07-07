@@ -8,8 +8,9 @@ export async function POST(request: Request) {
 
     const resumeFile = formData.get("resume") as File | null;
     const jobDescription = formData.get("jobDescription") as string | null;
+
     console.log("JOB DESCRIPTION:");
-console.log(jobDescription);
+    console.log(jobDescription);
 
     if (!resumeFile || !jobDescription) {
       return NextResponse.json(
@@ -28,37 +29,26 @@ console.log(jobDescription);
       jobDescription,
     });
 
-return NextResponse.json({
-  success: true,
-  resume,
-  analysis,
-});
-  } catch (error) {
-console.error("ANALYZE ERROR:", error);
+    return NextResponse.json({
+      success: true,
+      resume,
+      analysis,
+    });
+  } catch (error: unknown) {
+    console.error("ANALYZE ERROR:", error);
 
-if (error instanceof Error) {
-  console.error(error.message);
-  console.error(error.stack);
-}
+    let errorMessage = "Unknown error";
 
-return NextResponse.json(
-  {
-    success: false,
-    error:
-      error instanceof Error
-        ? error.message
-        : JSON.stringify(error, null, 2),
-  },
-  { status: 500 }
-);
+    if (error instanceof Error) {
+      console.error(error.message);
+      console.error(error.stack);
+      errorMessage = error.message;
+    }
 
     return NextResponse.json(
       {
         success: false,
-        error:
-          error instanceof Error
-            ? error.message
-            : "Unknown error",
+        error: errorMessage,
       },
       { status: 500 }
     );
