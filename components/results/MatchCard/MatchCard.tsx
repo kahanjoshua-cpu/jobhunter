@@ -34,9 +34,9 @@ export default function MatchCard({
     return () => clearTimeout(timer);
   }, []);
 
-  const insights = analysis.summary
-    .split(". ")
-    .filter((sentence) => sentence.trim() !== "");
+const insights = analysis.scoreExplanation
+  .split(". ")
+  .filter((sentence) => sentence.trim() !== "");
 
   return (
     <section className="mx-auto w-full max-w-7xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
