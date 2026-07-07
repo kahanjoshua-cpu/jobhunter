@@ -3,6 +3,9 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import {
+  saveWorkflow,
+} from "@/lib/workflow/workflow";
+import {
   BrainCircuit,
   CheckCircle2,
   Loader2,
@@ -151,12 +154,14 @@ export default function LoadingPage() {
         const result =
           await response.json();
 
-        sessionStorage.setItem(
-          "analysis",
-          JSON.stringify(
-            result.analysis
-          )
-        );
+saveWorkflow({
+  resume: result.resume,
+  jobDescription,
+  analysis: result.analysis,
+  resumeGapResponses: [],
+  acceptedResumeBullets: [],
+  assessment: null,
+});
 
         setProgress(100);
 

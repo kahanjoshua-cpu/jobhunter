@@ -10,7 +10,6 @@ interface OverallAssessmentProps {
   strengths: string[];
   concerns: string[];
   recommendation: string;
-  animationStage: number;
 }
 
 export default function OverallAssessment({
@@ -18,16 +17,9 @@ export default function OverallAssessment({
   strengths,
   concerns,
   recommendation,
-  animationStage,
 }: OverallAssessmentProps) {
   return (
-    <section
-      className={`rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-700 ${
-        animationStage >= 5
-          ? "translate-y-0 opacity-100"
-          : "translate-y-6 opacity-0"
-      }`}
-    >
+<section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
       {/* Header */}
 
       <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-5">

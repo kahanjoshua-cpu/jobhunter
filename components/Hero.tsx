@@ -6,7 +6,8 @@ import FeedbackBanner from "./home/FeedbackBanner";
 export default function Hero() {
   return (
     <main className="min-h-screen bg-[#F7F8FC]">
-<section className="mx-auto max-w-[1420px] px-8 pt-8 pb-12">        <div className="grid items-start gap-12 lg:grid-cols-[1fr_760px]">
+<section className="mx-auto max-w-[1420px] px-8 pt-8 pb-32">
+    <div className="grid items-start gap-12 lg:grid-cols-[1fr_760px]">
           <div className="pt-16">
             <HeroCopy />
             <HowItWorks />
@@ -17,10 +18,7 @@ export default function Hero() {
   </div>
 </div>
         </div>
-
-        <div className="mt-12">
-          <FeedbackBanner />
-        </div>
+<FeedbackBanner />
       </section>
     </main>
   );

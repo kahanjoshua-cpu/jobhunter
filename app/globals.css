@@ -22,7 +22,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-plus-jakarta);
 }
 @keyframes fadeIn {
   from {
@@ -34,4 +34,42 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+.font-plus-jakarta {
+  font-family: var(--font-plus-jakarta);
+}
+
+.font-inter {
+  font-family: var(--font-inter);
+}
+
+.font-manrope {
+  font-family: var(--font-manrope);
+}
+
+.font-geist {
+  font-family: var(--font-geist-sans);
+}
+
+.font-ibm {
+  font-family: var(--font-ibm);
+}
+.font-space-grotesk {
+  font-family: var(--font-space-grotesk);
+}
+
+.font-dm-sans {
+  font-family: var(--font-dm-sans);
+}
+
+.font-poppins {
+  font-family: var(--font-poppins);
+}
+
+.font-outfit {
+  font-family: var(--font-outfit);
+}
+
+.font-source-sans {
+  font-family: var(--font-source-sans);
 }

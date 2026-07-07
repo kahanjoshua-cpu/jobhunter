@@ -1,36 +1,24 @@
+import Logo from "@/components/Logo";
 export default function Navbar() {
   return (
     <header className="bg-[#F7F8FC]">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-8 py-6">
-
         <a href="/" className="flex items-center gap-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#071A44] text-2xl font-bold text-white">
-            J
-          </div>
+<Logo />
 
           <span className="text-4xl font-bold tracking-tight">
             Jobhunter
           </span>
         </a>
 
-        <nav className="flex items-center gap-10 text-lg font-semibold">
-
-          <a
-            href="/why-jobhunter"
-            className="text-gray-800 hover:text-indigo-600 transition"
-          >
-            Why Jobhunter
-          </a>
-
-          <a
-            href="#"
-            className="rounded-xl bg-indigo-600 px-6 py-3 text-white hover:bg-indigo-700 transition"
-          >
-            Get Started
-          </a>
-
-        </nav>
-
+<nav className="flex items-center">
+<a
+  href="/why-jobhunter"
+  className="rounded-full border-2 border-indigo-300 bg-gradient-to-r from-indigo-50 to-purple-50 px-6 py-3 text-base font-semibold text-indigo-700 shadow-md transition-all duration-200 hover:-translate-y-0.5 hover:border-indigo-500 hover:shadow-lg"
+>
+  💡 Why Jobhunter?
+</a>
+</nav>
       </div>
     </header>
   );

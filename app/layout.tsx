@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import {
+  Geist,
+  Geist_Mono,
+  Inter,
+  Manrope,
+  IBM_Plex_Sans,
+  Plus_Jakarta_Sans,
+  Space_Grotesk,
+  DM_Sans,
+  Poppins,
+  Outfit,
+  Source_Sans_3,
+} from "next/font/google";
+
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 
@@ -10,6 +23,53 @@ const geistSans = Geist({
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+});
+
+const manrope = Manrope({
+  variable: "--font-manrope",
+  subsets: ["latin"],
+});
+
+const ibmPlex = IBM_Plex_Sans({
+  variable: "--font-ibm",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
+  subsets: ["latin"],
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const outfit = Outfit({
+  variable: "--font-outfit",
+  subsets: ["latin"],
+});
+
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
 });
 
@@ -26,12 +86,26 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`
+        ${geistSans.variable}
+        ${geistMono.variable}
+        ${inter.variable}
+        ${manrope.variable}
+        ${ibmPlex.variable}
+        ${plusJakarta.variable}
+        ${spaceGrotesk.variable}
+        ${dmSans.variable}
+        ${poppins.variable}
+        ${outfit.variable}
+        ${sourceSans.variable}
+        h-full
+        antialiased
+      `}
     >
-      <body className="min-h-screen bg-[#F7F8FC]">
-        <Navbar />
-        {children}
-      </body>
+<body className="min-h-screen bg-[#F7F8FC]">
+  <Navbar />
+  {children}
+</body>
     </html>
   );
 }

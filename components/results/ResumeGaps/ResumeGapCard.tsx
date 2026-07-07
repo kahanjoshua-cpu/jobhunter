@@ -1,3 +1,9 @@
+import {
+  BUTTONS,
+  CARDS,
+  TYPOGRAPHY,
+} from "@/lib/design";
+
 import type { MissingSkill } from "@/lib/types/resumeAnalysis";
 
 interface ResumeGapCardProps {
@@ -5,49 +11,58 @@ interface ResumeGapCardProps {
   index: number;
   total: number;
   onStart: () => void;
+  onNoExperience: () => void;
 }
 
 export default function ResumeGapCard({
   gap,
-  index,
-  total,
   onStart,
+  onNoExperience,
 }: ResumeGapCardProps) {
   return (
-    <>
-      <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-700">
-        Resume Gap {index + 1} of {total}
-      </span>
+    <div className={CARDS.resumeGap}>
+      {/* Main Heading */}
+      <h3 className={TYPOGRAPHY.gapHeading}>
+        We couldn't find evidence of{" "}
+        <strong>{gap.skill}</strong> on your resume.
+      </h3>
 
-      <div className="rounded-xl border border-slate-200 bg-slate-50 p-5">
-        <p className="leading-7 text-slate-700">
-          We couldn't find evidence of{" "}
-          <strong>{gap.skill}</strong> on your resume.
-        </p>
+      {/* Explanation */}
+      <p className={TYPOGRAPHY.gapExplanation}>
+        {gap.reason}
+      </p>
 
-        <p className="mt-3 leading-7 text-slate-600">
-          {gap.reason}
-        </p>
+      {/* Question */}
+      <h4 className={`mt-7 ${TYPOGRAPHY.gapQuestion}`}>
+        Have you used <strong>{gap.skill}</strong> before?
+      </h4>
 
-        <p className="mt-6 text-lg font-semibold text-slate-900">
-          Have you used <strong>{gap.skill}</strong> before?
-        </p>
+      {/* Buttons */}
+      <div className="mt-6 flex flex-col gap-4 sm:flex-row">
 
-        <div className="mt-6 flex flex-col gap-4 sm:flex-row">
-          <button
-            onClick={onStart}
-            className="rounded-xl bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700"
-          >
-            👍 Oh yeah, I do!
-          </button>
+        {/* Yes */}
+        <button
+          onClick={onStart}
+          className={`
+            ${BUTTONS.option1.base}
+            ${BUTTONS.option1.primary}
+          `}
+        >
+          👍 Oh yeah, I do!
+        </button>
 
-          <button
-            className="rounded-xl border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition hover:bg-slate-100"
-          >
-            👎 No, I don't.
-          </button>
-        </div>
+        {/* No */}
+        <button
+          onClick={onNoExperience}
+          className={`
+            ${BUTTONS.option1.base}
+            ${BUTTONS.option1.secondary}
+          `}
+        >
+          👎 No, I don't.
+        </button>
+
       </div>
-    </>
+    </div>
   );
 }

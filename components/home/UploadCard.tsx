@@ -182,15 +182,15 @@ export default function UploadCard() {
               onClick={handleBrowse}
               className="group mt-5 flex h-40 cursor-pointer items-center justify-center rounded-2xl border-2 border-dashed border-indigo-200 bg-indigo-50/20 transition-all duration-200 hover:border-indigo-400 hover:bg-indigo-50/40"
             >
-              <div className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
+<div className="mt-6 text-center">
+<div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100">
                   <CheckCircle2
                     size={30}
                     className="text-emerald-600"
                   />
                 </div>
 
-                <p className="mt-4 text-lg font-semibold text-slate-900">
+<p className="mt-1.5 break-all text-sm text-slate-600">
                   Resume uploaded
                 </p>
 

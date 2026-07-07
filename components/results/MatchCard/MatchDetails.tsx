@@ -1,13 +1,17 @@
+import { Info } from "lucide-react";
+
 interface MatchDetailsProps {
   score: number;
   overallMatch: string;
   confidence: string;
+  onOpenConfidenceModal: () => void;
 }
 
 export default function MatchDetails({
   score,
   overallMatch,
   confidence,
+  onOpenConfidenceModal,
 }: MatchDetailsProps) {
   let badgeClass = "";
 
@@ -24,9 +28,8 @@ export default function MatchDetails({
 
   return (
     <div className="flex flex-col">
-
       <p
-        className="text-base font-bold uppercase tracking-[0.24em] text-slate-800"
+        className="text-lg font-bold uppercase tracking-[0.24em] text-slate-800"
         style={{
           fontFamily: '"Plus Jakarta Sans", sans-serif',
         }}
@@ -41,17 +44,18 @@ export default function MatchDetails({
       </div>
 
       <div className="mt-8">
-
-        <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">
+        <button
+          onClick={onOpenConfidenceModal}
+          className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500 transition hover:text-indigo-600"
+        >
           AI Confidence
-        </p>
+          <Info className="h-4 w-4" />
+        </button>
 
         <p className="mt-2 text-lg font-semibold text-slate-800">
           {confidence}
         </p>
-
       </div>
-
     </div>
   );
 }

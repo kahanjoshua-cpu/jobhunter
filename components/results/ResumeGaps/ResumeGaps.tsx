@@ -1,29 +1,33 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Lightbulb } from "lucide-react";
 
 import type { MissingSkill } from "@/lib/types/resumeAnalysis";
 
 import ResumeGapCard from "./ResumeGapCard";
+import ResumeGapProgress from "./ResumeGapProgress";
 import ResumeGapFlow from "./ResumeGapFlow";
 import ResumeBulletGenerator from "./ResumeBulletGenerator";
+import ResumeGapSkipConfirmation from "./ResumeGapSkipConfirmation";
 
 interface ResumeGapsProps {
   missingSkills: MissingSkill[];
-  animationStage: number;
 }
 
 type Step =
   | "question"
+  | "skip"
   | "details"
   | "generated"
   | "complete";
 
 export default function ResumeGaps({
   missingSkills,
-  animationStage,
 }: ResumeGapsProps) {
+  const router = useRouter();
+
   const [currentGapIndex, setCurrentGapIndex] =
     useState(0);
 
@@ -48,6 +52,9 @@ export default function ResumeGaps({
 
   const [acceptedBullets, setAcceptedBullets] =
     useState<string[]>([]);
+
+  const [completedGaps, setCompletedGaps] =
+    useState(0);
 
   const currentGap =
     missingSkills[currentGapIndex];
@@ -90,12 +97,12 @@ export default function ResumeGaps({
         );
       }
 
-      const result = await response.json();
+      const result =
+        await response.json();
 
       setGeneratedBullet(result.bullet);
-
       setStep("generated");
-    } catch (error) {
+          } catch (error) {
       console.error(error);
 
       setError(
@@ -113,6 +120,7 @@ export default function ResumeGaps({
     ];
 
     setAcceptedBullets(updatedBullets);
+    setCompletedGaps((prev) => prev + 1);
 
     if (
       currentGapIndex ===
@@ -123,48 +131,55 @@ export default function ResumeGaps({
     }
 
     setCurrentGapIndex((prev) => prev + 1);
+    setGeneratedBullet("");
+    setError("");
+    setStep("question");
+  }
 
+  function skipGap() {
+    setCompletedGaps((prev) => prev + 1);
+
+    if (
+      currentGapIndex ===
+      missingSkills.length - 1
+    ) {
+      setStep("complete");
+      return;
+    }
+
+    setCurrentGapIndex((prev) => prev + 1);
     setGeneratedBullet("");
     setError("");
     setStep("question");
   }
 
   return (
-    <section
-      className={`rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-700 ${
-        animationStage >= 4
-          ? "translate-y-0 opacity-100"
-          : "translate-y-6 opacity-0"
-      }`}
-    >
+    <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
 
-      <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-5">
+      <div className="flex items-center gap-3 border-b border-slate-100 px-6 py-2">
+
         <Lightbulb className="h-6 w-6 text-amber-500" />
 
         <div>
-          <h2 className="text-2xl font-semibold text-slate-900">
+          <h2 className="text-[2.15rem] font-semibold tracking-tight text-slate-900">
             Resume Gaps
           </h2>
 
-          <p className="text-sm text-slate-500">
+          <p className="mt-0.5 text-[1.08rem] font-medium text-slate-600">
             Let's uncover experience you may have forgotten to include.
           </p>
         </div>
+
       </div>
 
-      <div className="space-y-6 p-6">
+      <div className="space-y-4 p-6">
 
         {step !== "complete" && (
-          <div className="flex items-center justify-between rounded-xl bg-slate-100 px-4 py-3">
-            <span className="font-medium text-slate-700">
-              Resume Gap {currentGapIndex + 1} of{" "}
-              {missingSkills.length}
-            </span>
-
-            <span className="text-sm text-slate-500">
-              {acceptedBullets.length} completed
-            </span>
-          </div>
+          <ResumeGapProgress
+            current={currentGapIndex + 1}
+            total={missingSkills.length}
+            completed={completedGaps}
+          />
         )}
 
         {error && (
@@ -176,11 +191,16 @@ export default function ResumeGaps({
         {step === "question" && (
           <ResumeGapCard
             gap={currentGap}
-            index={currentGapIndex}
-            total={missingSkills.length}
-            onStart={() =>
-              setStep("details")
-            }
+            onStart={() => setStep("details")}
+            onNoExperience={() => setStep("skip")}
+          />
+        )}
+
+        {step === "skip" && (
+          <ResumeGapSkipConfirmation
+            skill={currentGap.skill}
+            onGoBack={() => setStep("question")}
+            onSkip={skipGap}
           />
         )}
 
@@ -207,33 +227,73 @@ export default function ResumeGaps({
             }}
           />
         )}
+                {step === "complete" &&
+          (acceptedBullets.length > 0 ? (
 
-        {step === "complete" && (
-          <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-10 text-center">
+            <div className="rounded-2xl border border-emerald-200 bg-emerald-50 p-10 text-center">
 
-            <div className="text-5xl">
-              🎉
+              <div className="text-5xl">
+                🎉
+              </div>
+
+  <h3 className="mt-4 text-3xl font-semibold text-slate-900">
+  Resume Review Complete!
+</h3>
+
+              <p className="mt-4 text-lg leading-8 text-slate-700">
+                You've worked through every resume gap we identified and
+                generated stronger resume content tailored to this job.
+              </p>
+
+              <p className="mt-6 text-sm text-slate-500">
+                Great work. Your resume is now better aligned with this
+                opportunity.
+              </p>
+
+              <div className="mt-10">
+                <button
+                  onClick={() =>
+                    router.push("/results/assessment")
+                  }
+                  className="rounded-xl bg-indigo-600 px-8 py-4 text-lg font-medium text-white transition hover:bg-indigo-700"
+                >
+                  View Your Overall Assessment →
+                </button>
+              </div>
+
             </div>
 
-            <h3 className="mt-4 text-3xl font-semibold text-slate-900">
-              Resume Improved!
-            </h3>
+          ) : (
 
-            <p className="mt-4 text-lg leading-8 text-slate-700">
-              You've worked through every
-              resume gap we identified and
-              generated stronger resume
-              content tailored to this job.
-            </p>
+            <div className="rounded-2xl border border-blue-200 bg-blue-50 p-10 text-center">
 
-            <p className="mt-6 text-sm text-slate-500">
-              Great work. Your resume is
-              now better aligned with this
-              opportunity.
-            </p>
+              <div className="text-5xl">
+                ✅
+              </div>
 
-          </div>
-        )}
+              <h3 className="mt-4 text-3xl font-semibold text-slate-900">
+                Resume Review Complete
+              </h3>
+
+<p className="mt-6 text-lg leading-8 text-slate-700">
+  Continue to your overall assessment and personalized
+  suggestions for strengthening your application.
+</p>
+
+              <div className="mt-10">
+                <button
+                  onClick={() =>
+                    router.push("/results/assessment")
+                  }
+                  className="rounded-xl bg-indigo-600 px-8 py-4 text-lg font-medium text-white transition hover:bg-indigo-700"
+                >
+                  View Your Overall Assessment →
+                </button>
+              </div>
+
+            </div>
+
+          ))}
 
       </div>
 

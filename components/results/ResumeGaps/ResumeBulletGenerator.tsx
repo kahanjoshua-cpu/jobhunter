@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
 import { Check, Copy } from "lucide-react";
 
 interface ResumeBulletGeneratorProps {
@@ -39,41 +38,67 @@ export default function ResumeBulletGenerator({
   }
 
   return (
-    <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-5">
+    <div className="rounded-2xl border-2 border-blue-400 bg-blue-100 p-6">
 
-      <h3 className="text-lg font-semibold text-slate-900">
-        ✨ Here's a resume bullet we recommend
-      </h3>
+      <div className="flex items-start gap-3">
 
-      <p className="mt-2 leading-7 text-slate-700">
-        Feel free to edit the wording before adding it to your resume.
-      </p>
+  <div className="w-8 pt-1 text-2xl">
+    ✨
+  </div>
 
+  <div>
+    <h3 className="font-ibm text-3xl font-semibold text-slate-900">
+      Here's a resume bullet we recommend
+    </h3>
+
+    <p className="font-ibm mt-3 text-xl leading-8 text-slate-800">
+      Feel free to edit the wording before adding it to your resume.
+    </p>
+  </div>
+
+</div>
       <textarea
         rows={5}
         value={editedBullet}
         onChange={(e) =>
           setEditedBullet(e.target.value)
         }
-        className="mt-5 w-full rounded-xl border border-emerald-200 bg-white p-4 leading-7 text-slate-700 focus:border-emerald-400 focus:outline-none focus:ring-2 focus:ring-emerald-200"
+        className="
+          mt-6
+          w-full
+          rounded-lg
+          border-2
+          border-blue-400
+          bg-blue-50
+          px-4
+          py-4
+          leading-8
+          text-slate-700
+          shadow-md
+          transition
+          focus:border-indigo-600
+          focus:ring-4
+          focus:ring-indigo-200
+          focus:outline-none
+        "
       />
 
-      <div className="mt-6 flex flex-wrap gap-3">
+      <div className="mt-6 flex flex-wrap gap-4">
 
         <button
           onClick={onAccept}
-          className="rounded-xl bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-emerald-700"
+          className="rounded-xl bg-indigo-700 px-7 py-4 text-lg font-medium text-white transition hover:bg-indigo-800"
         >
           I'll use this bullet
         </button>
 
         <button
           onClick={copyBullet}
-          className="flex items-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 font-medium text-slate-700 transition hover:bg-slate-50"
+          className="flex items-center gap-2 rounded-xl bg-indigo-500 px-7 py-4 text-lg font-medium text-white transition hover:bg-indigo-600"
         >
           {copied ? (
             <>
-              <Check className="h-5 w-5 text-emerald-600" />
+              <Check className="h-5 w-5 text-white" />
               Copied!
             </>
           ) : (
@@ -86,7 +111,7 @@ export default function ResumeBulletGenerator({
 
         <button
           onClick={onRegenerate}
-          className="rounded-xl border border-blue-300 bg-white px-6 py-3 font-medium text-blue-700 transition hover:bg-blue-50"
+          className="rounded-xl border-2 border-indigo-300 bg-indigo-100 px-7 py-4 text-lg font-medium text-indigo-800 transition hover:bg-indigo-200"
         >
           Generate Another Version
         </button>

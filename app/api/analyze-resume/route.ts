@@ -28,10 +28,11 @@ console.log(jobDescription);
       jobDescription,
     });
 
-    return NextResponse.json({
-      success: true,
-      analysis,
-    });
+return NextResponse.json({
+  success: true,
+  resume,
+  analysis,
+});
   } catch (error) {
 console.error("ANALYZE ERROR:", error);
 
