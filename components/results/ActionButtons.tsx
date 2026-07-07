@@ -1,5 +1,3 @@
-"use client";
-
 import {
   Download,
   RotateCcw,
@@ -7,11 +5,11 @@ import {
 } from "lucide-react";
 
 interface ActionButtonsProps {
-  animationStage: number;
+  animationStage?: number;
 }
 
 export default function ActionButtons({
-  animationStage,
+  animationStage = 6,
 }: ActionButtonsProps) {
   return (
     <section
