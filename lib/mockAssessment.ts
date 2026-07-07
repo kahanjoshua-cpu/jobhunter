@@ -19,21 +19,27 @@ export const mockAssessment: Assessment = {
     },
   ],
 
-  concerns: [
+  strengthenApplication: [
     {
       title: "Limited Salesforce Experience",
-      description:
+      finding:
         "Although you're actively pursuing Salesforce certification, your resume doesn't yet demonstrate significant hands-on platform experience.",
+      recommendation:
+        "Be prepared to discuss related CRM experience and emphasize your ongoing Salesforce learning.",
     },
     {
       title: "Leadership Experience",
-      description:
+      finding:
         "The position emphasizes leadership responsibilities that aren't yet strongly represented throughout your resume.",
+      recommendation:
+        "Highlight examples where you led initiatives, mentored others, or influenced project outcomes.",
     },
     {
       title: "Enterprise CRM Exposure",
-      description:
+      finding:
         "Your resume doesn't clearly demonstrate experience working with enterprise-scale CRM implementations.",
+      recommendation:
+        "Showcase any experience working with large systems, cross-functional tools, or enterprise-scale projects.",
     },
   ],
 

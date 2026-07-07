@@ -188,13 +188,15 @@ export default function ResumeGaps({
           </div>
         )}
 
-        {step === "question" && (
-          <ResumeGapCard
-            gap={currentGap}
-            onStart={() => setStep("details")}
-            onNoExperience={() => setStep("skip")}
-          />
-        )}
+       {step === "question" && (
+  <ResumeGapCard
+    gap={currentGap}
+    index={currentGapIndex + 1}
+    total={missingSkills.length}
+    onStart={() => setStep("details")}
+    onNoExperience={() => setStep("skip")}
+  />
+)}
 
         {step === "skip" && (
           <ResumeGapSkipConfirmation
