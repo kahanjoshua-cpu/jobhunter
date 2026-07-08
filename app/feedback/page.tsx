@@ -39,7 +39,7 @@ export default function FeedbackPage() {
 
             <div className="mt-6 flex justify-center">
   <a
-    href="https://forms.gle/CpQZpQvDmWyz5wJLA"
+    href="https://forms.gle/MoaNrdtA6ZSYsewi8"
     target="_blank"
     rel="noopener noreferrer"
     className="inline-flex rounded-xl bg-indigo-600 px-6 py-4 text-lg font-semibold text-white transition hover:bg-indigo-700"
@@ -67,7 +67,7 @@ export default function FeedbackPage() {
             </p>
 
             <a
-              href="https://forms.gle/F7rLX5tVtiPXBfAW6"
+              href="https://forms.gle/GgnN4oDWJPdKqhP29"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-6 inline-flex rounded-xl bg-purple-600 px-6 py-4 text-lg font-semibold text-white transition hover:bg-purple-700"
