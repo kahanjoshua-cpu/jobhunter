@@ -34,7 +34,7 @@ export default function MatchCard({
     return () => clearTimeout(timer);
   }, []);
 
-const insights = analysis.scoreExplanation
+const insights = (analysis.summary ?? "")
   .split(". ")
   .filter((sentence) => sentence.trim() !== "");
 
