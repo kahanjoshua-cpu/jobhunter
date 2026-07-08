@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import type { ResumeAnalysis } from "@/lib/types/resumeAnalysis";
 
 import MatchCard from "@/components/results/MatchCard/MatchCard";
+import ResumeGaps from "@/components/results/ResumeGaps/ResumeGaps";
 import { getWorkflow } from "@/lib/workflow/workflow";
 
 export default function ResultsPage() {
@@ -34,8 +35,16 @@ export default function ResultsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50 p-10">
-      <MatchCard analysis={analysis} />
+    <main className="min-h-screen bg-slate-50">
+      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-12">
+
+        <MatchCard analysis={analysis} />
+
+        <ResumeGaps
+          missingSkills={analysis.missingSkills ?? []}
+        />
+
+      </div>
     </main>
   );
 }
