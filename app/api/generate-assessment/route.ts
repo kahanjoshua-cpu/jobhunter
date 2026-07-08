@@ -15,15 +15,24 @@ export async function POST(request: NextRequest) {
     });
 
     return NextResponse.json(result);
-  } catch (error) {
+  } catch (error: unknown) {
     console.error(
       "GENERATE ASSESSMENT ERROR:",
       error
     );
 
+    let errorMessage = "Unknown error";
+
+    if (error instanceof Error) {
+      console.error(error.message);
+      console.error(error.stack);
+      errorMessage = error.message;
+    }
+
     return NextResponse.json(
       {
-        error: "Failed to generate assessment.",
+        success: false,
+        error: errorMessage,
       },
       {
         status: 500,
