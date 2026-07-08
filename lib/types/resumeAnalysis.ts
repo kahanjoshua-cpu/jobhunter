@@ -28,7 +28,7 @@ export interface ResumeAnalysis {
 
   confidence: "High" | "Medium" | "Low";
 
-scoreExplanation: string;
+summary: string;
 
   strengths: string[];
 
