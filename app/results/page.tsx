@@ -5,10 +5,6 @@ import { useRouter } from "next/navigation";
 
 import type { ResumeAnalysis } from "@/lib/types/resumeAnalysis";
 
-import MatchCard from "@/components/results/MatchCard/MatchCard";
-import ResumeGaps from "@/components/results/ResumeGaps/ResumeGaps";
-import ActionButtons from "@/components/results/ActionButtons";
-import FeedbackBanner from "@/components/home/FeedbackBanner";
 import { getWorkflow } from "@/lib/workflow/workflow";
 
 export default function ResultsPage() {
@@ -44,32 +40,23 @@ export default function ResultsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-slate-50">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-8 px-6 py-12 pb-32">
+    <main className="min-h-screen bg-slate-50 p-10">
+      <div className="mx-auto max-w-5xl">
+        <h1 className="text-4xl font-bold text-slate-900">
+          Results Page Loaded Successfully
+        </h1>
 
-        <div>
-          <h1 className="text-5xl font-bold tracking-tight text-slate-900">
-            Your Jobhunter Report
-          </h1>
+        <p className="mt-4 text-slate-600">
+          If you can see this page, then the crash is happening inside one of
+          the Results components—not in the page itself.
+        </p>
 
-          <p className="mt-3 text-lg leading-8 text-slate-600">
-            Here's how your resume compares to this job,
-            where you already stand out, and where you
-            may want to strengthen your application.
-          </p>
+        <div className="mt-8 rounded-xl border border-slate-300 bg-white p-6">
+          <pre className="overflow-auto whitespace-pre-wrap text-sm">
+            {JSON.stringify(analysis, null, 2)}
+          </pre>
         </div>
-
-        <MatchCard analysis={analysis} />
-
-        <ResumeGaps
-          missingSkills={analysis.missingSkills ?? []}
-        />
-
-        <ActionButtons />
-
       </div>
-
-      <FeedbackBanner />
     </main>
   );
 }
