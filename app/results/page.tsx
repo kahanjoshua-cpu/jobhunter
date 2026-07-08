@@ -7,7 +7,6 @@ import type { ResumeAnalysis } from "@/lib/types/resumeAnalysis";
 
 import MatchCard from "@/components/results/MatchCard/MatchCard";
 import ResumeGaps from "@/components/results/ResumeGaps/ResumeGaps";
-import ActionButtons from "@/components/results/ActionButtons";
 import FeedbackBanner from "@/components/home/FeedbackBanner";
 import { getWorkflow } from "@/lib/workflow/workflow";
 
@@ -64,8 +63,6 @@ export default function ResultsPage() {
         <ResumeGaps
           missingSkills={analysis.missingSkills ?? []}
         />
-
-        <ActionButtons />
 
       </div>
 

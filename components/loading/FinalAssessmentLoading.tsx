@@ -106,7 +106,7 @@ export default function FinalAssessmentLoading({
         <div className="text-5xl">🧠</div>
 
         <h2 className="mt-4 text-3xl font-bold text-slate-900">
-          Preparing your final hiring assessment...
+          Preparing your final assessment...
         </h2>
 
         <p className="mt-3 text-lg text-slate-500">
