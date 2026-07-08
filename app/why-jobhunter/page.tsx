@@ -21,7 +21,7 @@ export default function WhyJobhunterPage() {
             When I was laid off, I experienced something that millions of job
             seekers go through every year. I updated my resume, searched for
             openings, and started applying. Like so many people, I spent hours
-            rewriting bullet points, tailoring resumes, and hoping the next
+            rewriting bullet points, tailoring resumes, talking to Claude and ChatGPT,s and hoping the next
             application would finally lead to a conversation. Instead, it often
             felt like I was sending applications into a black hole.
           </p>
