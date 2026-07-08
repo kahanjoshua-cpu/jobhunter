@@ -12,6 +12,7 @@ import ConcernsCard from "@/components/assessment/ConcernsCard";
 import FinalAssessment from "@/components/assessment/FinalAssessment";
 import InterviewQuestionsModal from "@/components/assessment/InterviewQuestionsModal";
 import FinalAssessmentLoading from "@/components/loading/FinalAssessmentLoading";
+import FeedbackBanner from "@/components/home/FeedbackBanner";
 
 export default function AssessmentPage() {
   const [analysis, setAnalysis] =
@@ -117,6 +118,8 @@ export default function AssessmentPage() {
           }
         />
       )}
+
+      <FeedbackBanner />
     </main>
   );
 }
