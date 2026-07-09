@@ -107,6 +107,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-[#F7F8FC]">
         <Navbar />
         {children}
+        <Analytics />
 
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
