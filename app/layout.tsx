@@ -1,5 +1,5 @@
 import Script from "next/script";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import {
   Geist,
@@ -107,6 +107,8 @@ export default function RootLayout({
       <body className="min-h-screen bg-[#F7F8FC]">
         <Navbar />
         {children}
+
+        <Analytics />
 
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
